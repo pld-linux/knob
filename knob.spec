@@ -7,13 +7,14 @@ License:	GPL
 Group:		X11/Applications
 Source0:	http://lichota.net/~krzysiek/projects/knob/%{name}-%{version}.tar.gz
 # Source0-md5:	da477b2604625085441df72bdc4bb14a
+Source1:        http://ep09.pld-linux.org/~djurban/kde/kde-common-admin.tar.bz2
+# Source1-md5:  81e0b2f79ef76218381270960ac0f55f
 URL:		http://lichota.net/~krzysiek/projects/knob/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= 3.0.3
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  kdelibs-devel >= 9:3.2.0
+BuildRequires:  unsermake >= 040805
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define         _htmldir        /usr/share/doc/kde/HTML
 
 %description
 Knob is a simple volume control applet for KDE.
@@ -22,30 +23,37 @@ Knob is a simple volume control applet for KDE.
 Knob to prosty aplet do kontroli g³o¶no¶ci dla KDE.
 
 %prep
-%setup -q
+%setup -q -a1
 
 %build
-kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_icondir="%{_pixmapsdir}"; export kde_icondir
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
-%configure
+cp -f /usr/share/automake/config.sub admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
+%{__make} -f admin/Makefile.common cvs
 
+%configure \
+	--with-qt-libraries=%{_libdir}
 %{__make}
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir} \
+	kde_libs_htmldir=%{_kdedocdir}
+
 
 %find_lang %{name} --with-kde
-
+mv  $RPM_BUILD_ROOT%{_iconsdir}/{lo,hi}color
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libknob.so*
+# Is it really necessary?
 %{_libdir}/libknob.la
 %{_datadir}/apps/kicker/applets/knob.desktop
-%{_pixmapsdir}/locolor/32x32/apps/knob.png
+%{_iconsdir}/hicolor/32x32/apps/knob.png
