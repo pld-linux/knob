@@ -8,7 +8,7 @@ Group:		X11/Applications
 Source0:	http://lichota.net/~krzysiek/projects/knob/%{name}-%{version}.tar.gz
 # Source0-md5:	da477b2604625085441df72bdc4bb14a
 Source1:        http://ep09.pld-linux.org/~djurban/kde/kde-common-admin.tar.bz2
-# Source1-md5:  81e0b2f79ef76218381270960ac0f55f
+# Source1-md5:	81e0b2f79ef76218381270960ac0f55f
 URL:		http://lichota.net/~krzysiek/projects/knob/
 BuildRequires:	autoconf
 BuildRequires:	automake
