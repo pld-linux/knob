@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://lichota.net/~krzysiek/projects/knob/%{name}-%{version}.tar.gz
+# Source0-md5:	da477b2604625085441df72bdc4bb14a
 URL:		http://lichota.net/~krzysiek/projects/knob/
 BuildRequires:	autoconf
 BuildRequires:	automake
