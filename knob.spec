@@ -10,10 +10,11 @@ Source0:	http://lichota.net/~krzysiek/projects/knob/%{name}-%{version}.tar.gz
 Source1:        http://ep09.pld-linux.org/~djurban/kde/kde-common-admin.tar.bz2
 # Source1-md5:  81e0b2f79ef76218381270960ac0f55f
 URL:		http://lichota.net/~krzysiek/projects/knob/
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  kdelibs-devel >= 9:3.2.0
-BuildRequires:  unsermake >= 040805
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	unsermake >= 040805
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,9 +45,10 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
 
+mv -f $RPM_BUILD_ROOT%{_iconsdir}/{lo,hi}color
 
 %find_lang %{name} --with-kde
-mv  $RPM_BUILD_ROOT%{_iconsdir}/{lo,hi}color
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
