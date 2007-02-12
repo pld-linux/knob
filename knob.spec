@@ -1,5 +1,5 @@
 Summary:	Simple volume control applet for KDE
-Summary(pl):	Prosty aplet do kontroli g≥o∂no∂ci dla KDE
+Summary(pl.UTF-8):   Prosty aplet do kontroli g≈Ço≈õno≈õci dla KDE
 Name:		knob
 Version:	1.2
 Release:	1
@@ -20,8 +20,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Knob is a simple volume control applet for KDE.
 
-%description -l pl
-Knob to prosty aplet do kontroli g≥o∂no∂ci dla KDE.
+%description -l pl.UTF-8
+Knob to prosty aplet do kontroli g≈Ço≈õno≈õci dla KDE.
 
 %prep
 %setup -q -a1
