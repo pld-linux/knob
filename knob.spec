@@ -1,5 +1,5 @@
 Summary:	Simple volume control applet for KDE
-Summary(pl.UTF-8):   Prosty aplet do kontroli głośności dla KDE
+Summary(pl.UTF-8):	Prosty aplet do kontroli głośności dla KDE
 Name:		knob
 Version:	1.2
 Release:	1
